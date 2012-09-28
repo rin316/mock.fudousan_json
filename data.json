@@ -1,0 +1,17 @@
+{
+	"status": "success",
+	"results": [
+		{ "id": "1", "address": ["新宿", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "10000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "2", "address": ["新宿", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "20000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "3", "address": ["新宿", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "20000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "4", "address": ["新宿", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "30000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "5", "address": ["渋谷", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "10000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "6", "address": ["渋谷", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "20000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "7", "address": ["渋谷", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "30000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "8", "address": ["文京", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "40000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "9", "address": ["文京", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "50000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "10", "address": ["中央", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "60000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "11", "address": ["中央", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "60000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" },
+		{ "id": "12", "address": ["中央", "千代田"], "walkingTime": ["徒歩9分", "徒歩3分"], "rent": "60000", "keyMoney": "10000", "roomLayout": "1LDK", "age": "10年" }
+	]
+}
