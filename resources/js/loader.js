@@ -24,6 +24,7 @@ var config = {
 		'jquery.effects.core.js',
 		'jquery.tmpl.min.js',
 		'jquery.cookie.js',
+		'../bootstrap/js/bootstrap.min.js',
 		'../../jquery.read_json.js',
 		'../../main.js'
 	]
