@@ -40,6 +40,7 @@
 		//change $iterationSelect
 		$iterationSelect.on('change', function () {
 			var index = $(this).val() - 1;
+			if (readJson.index === null) { readJson.index = index; }
 			readJson.iteration(index);
 		});
 		

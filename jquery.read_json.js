@@ -212,11 +212,10 @@ var MY = {};
 					var __this = this
 					,   indexRes
 					;
-					console.log(index);
 					
 					if (!__this.res) { return false; }
 					//nullなら抜ける,  0より小さい場合は抜ける,  取得した要素の数より大きければ抜ける
-					if (index === null || index < 0 || index > __this.res.results.length - 1) { return false; }
+					if (__this.index === null || index < 0 || index > __this.res.results.length - 1) { return false; }
 					__this.index = index;
 					//Object deep copy
 					indexRes = $.extend(true, {}, __this.res); 
