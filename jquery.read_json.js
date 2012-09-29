@@ -113,10 +113,12 @@ var MY = {};
 				 */
 				draw: function (res, templateId, outputId) {
 					var __this = this
+					,   $outputArea = $(outputId)
+					;
 
 					//既に挿入された要素があれば削除
-					__this.$contents.find($('.ajaxDraw')).remove();
-					$(templateId).tmpl(res.results).hide().appendTo(outputId).fadeIn(700).addClass('ajaxDraw');
+					$outputArea.find($('.ajaxDraw')).remove();
+					$(templateId).tmpl(res.results).hide().appendTo($outputArea).fadeIn(700).addClass('ajaxDraw');
 
 					//描画後、お気に入りボタンにイベントを設定
 					__this.addFavoriteEvent();
@@ -135,7 +137,7 @@ var MY = {};
 					var __this = this;
 
 					//$addFavoriteButton 定義
-					__this.$addFavoriteButton = __this.$contents.find($(__this.addFavoriteSelector));
+					__this.$addFavoriteButton = $(__this.addFavoriteSelector);
 
 					//click $addFavoriteButton
 					__this.$addFavoriteButton.on('click', function () {
