@@ -41,10 +41,15 @@
 		 */
 		(function () {
 			//インスタンス作成
-			var readJson = new MY.ui.ReadJson();
-
-			readJson.jqTemplateSelector  = '#jQueryTemplate';
-			readJson.jqOutputSelector    = '#jQueryTemplateOutput';
+			var readJson = new MY.ui.ReadJson({
+			    templateSelector: '#jQueryTemplate' //{selector}
+			,   OutputSelector: '#jQueryTemplateOutput' //{selector}
+			,   dataPath: 'data.json' //{string}
+			,   idName: 'id' //{string}
+			});
+			
+			//readJson.jqTemplateSelector  = '#jQueryTemplate';
+			//readJson.jqOutputSelector    = '#jQueryTemplateOutput';
 
 			var $contents        = $('#contents')
 			,   $loadButton      = $contents.find($('.loadButton'))
@@ -115,7 +120,6 @@
 			//end debug
 		})();
 		
-		
-	});
+	});//end document ready
 
 })(jQuery, this);

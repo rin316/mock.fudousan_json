@@ -6,13 +6,26 @@ var MY = {};
 ;(function ($, window, undefined) {
 	MY.ui = {
 		ReadJson: (function () {
-			var ReadJson;
+			var DEFAULT_OPTIONS
+			,   ReadJson
+			;
 			
-			ReadJson = function () {
+			DEFAULT_OPTIONS = {
+			    templateSelector: '#jQueryTemplate' //{selector}
+			,   OutputSelector: '#jQueryTemplateOutput' //{selector}
+			,   dataPath: 'data.json' //{string}
+			,   idName: 'id' //{string}
+			};
+			
+			ReadJson = function (options) {
 				var __this = this;
 				
-				__this.dataPath            = 'data.json';
-				__this.idName              = 'id';
+				__this.o = $.extend({}, DEFAULT_OPTIONS, options);
+				
+				__this.templateSelector = __this.o.templateSelector;
+				__this.OutputSelector   = __this.o.OutputSelector;
+				__this.dataPath         = __this.o.dataPath;
+				__this.idName           = __this.o.idName;
 				
 				//cookieからidを読み込み配列化  cookieが無ければ空の配列を作成
 				__this.cookieArray = ($.cookie(__this.idName)) ? $.cookie(__this.idName).split("-"): [];
@@ -46,7 +59,7 @@ var MY = {};
 						if(!__this.statusValidation(res.status)){ return false }
 
 						//描画
-						__this.draw(__this.res, __this.jqTemplateSelector, __this.jqOutputSelector);
+						__this.draw(__this.res, __this.templateSelector, __this.OutputSelector);
 
 					//読み込み失敗時
 					}, function () {
@@ -230,7 +243,7 @@ var MY = {};
 					//results配列からindex番目の要素だけを残し削除
 					indexRes.results.splice(0, indexRes.results.length, __this.res.results[__this.index]);
 					//描画
-					__this.draw(indexRes, __this.jqTemplateSelector, __this.jqOutputSelector);
+					__this.draw(indexRes, __this.templateSelector, __this.OutputSelector);
 					
 					return __this;
 				}
