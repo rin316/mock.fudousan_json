@@ -247,11 +247,7 @@ var MY = {};
 					var __this = this;
 					
 					//debug領域に値を表示
-					if ($.type(variable) === 'object') {
-						$(selector).html(trace(variable));
-					} else {
-						$(selector).html(variable);
-					}
+					$(selector).html(trace(variable));
 					
 					//渡されたobjectをconsole.logのように見やすい文字で出力
 					function trace(s){
