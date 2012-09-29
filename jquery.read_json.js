@@ -43,7 +43,6 @@ var MY = {};
 				 * Ajax読み込み,描画メソッドを1つにバインド
 				 * @param {string, array} query ajax呼び出し時に送信するオブジェクトの、元になる文字列や配列
 				 * @return {Instance Object}
-				 * @see init
 				 */
 				loadBind: function (query) {
 					var __this = this;
@@ -198,7 +197,6 @@ var MY = {};
 				 * @param {Number} index 表示させたい要素のindex番号
 				 * @param {string} nullIsNotUpdate 値が'nullIsNotUpdate'であれば__this.index === null の時に__this.indexを更新しない
 				 * @return {Instance Object}
-				 * @see init
 				 */
 				iteration: function (index, nullIsNotUpdate) {
 					var __this = this
@@ -230,7 +228,6 @@ var MY = {};
 				//-----------------------------------------
 				/*
 				 * debug
-				 * @see init
 				 */
 				debug: function (selector, variable) {
 					var __this = this;
