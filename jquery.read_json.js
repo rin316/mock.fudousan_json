@@ -58,7 +58,6 @@ var MY = {};
 						if(!__this.statusValidation(res.status)){ return false }
 						
 						//絞込んで描画
-						console.log(iterationIndex);
 						if (iterationIndex !== undefined) {
 							__this.iteration(iterationIndex);
 						//全て描画
