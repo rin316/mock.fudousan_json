@@ -207,17 +207,23 @@ var MY = {};
 				 * iteration
 				 * index番目の項目だけを表示
 				 * @param {Number} index 表示させたい要素のindex番号
+				 * @param {string} nullIsNotUpdate 値が'nullIsNotUpdate'であれば__this.index === null の時に__this.indexを更新しない
 				 * @return {Instance Object}
 				 * @see init
 				 */
-				iteration: function (index) {
+				iteration: function (index, nullIsNotUpdate) {
 					var __this = this
 					,   indexRes
 					;
 					
 					if (!__this.res) { return false; }
-					//nullなら抜ける,  0より小さい場合は抜ける,  取得した要素の数より大きければ抜ける
-					if (__this.index === null || index < 0 || index > __this.res.results.length - 1) { return false; }
+					//'nullIsNotUpdate'が設定されていて && __this.indexがnullなら抜ける
+					if (nullIsNotUpdate === 'nullIsNotUpdate' && __this.index === null) {
+						return false;
+					}
+					//0より小さい場合は抜ける,  取得した要素の数より大きければ抜ける
+					if (index < 0 || index > __this.res.results.length - 1) { return false; }
+					//更新
 					__this.index = index;
 					//Object deep copy
 					indexRes = $.extend(true, {}, __this.res); 

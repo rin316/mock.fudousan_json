@@ -2,24 +2,21 @@
  * main.js
  */
 ;(function ($, window, undefined) {
-	var ReadJson = MY.ui.ReadJson;
-	
 	//インスタンス作成
-	var readJson = new ReadJson();
+	var readJson = new MY.ui.ReadJson();
 	
 	$(document).ready( function () {
-		readJson.$contents        = $('#contents');
-		readJson.addFavoriteSelector = '.addFavoriteButton';
 		readJson.jqTemplateSelector  = '#jQueryTemplate';
 		readJson.jqOutputSelector    = '#jQueryTemplateOutput';
 		
-		var $loadButton      = readJson.$contents.find($('.loadButton'))
-		,   $favoriteButton  = readJson.$contents.find($('.favoriteButton'))
-		,   $iterationSelect = readJson.$contents.find($('.iterationButton'))
-		,   $iterationPrev   = readJson.$contents.find($('.iterationPrev'))
-		,   $iterationNext   = readJson.$contents.find($('.iterationNext'))
+		var $contents        = $('#contents')
+		,   $loadButton      = $contents.find($('.loadButton'))
+		,   $showFavorite  = $contents.find($('.favoriteButton'))
+		,   $iterationSelect = $contents.find($('.iterationButton'))
+		,   $iterationPrev   = $contents.find($('.iterationPrev'))
+		,   $iterationNext   = $contents.find($('.iterationNext'))
+		,   addFavoriteSelector = '.addFavoriteButton'
 		;
-		
 		
 		
 		/*
@@ -31,29 +28,33 @@
 			readJson.loadBind(query);
 		});
 		
-		//click $favoriteButton
-		$favoriteButton.on('click', function () {
+		//click $showFavorite
+		$showFavorite.on('click', function () {
 			var query = readJson.cookieArray;
 			readJson.loadBind(query);
+		});
+		
+		//click addFavoriteSelector ($.delegate)
+		$contents.on('click', addFavoriteSelector, function () {
+			readJson.setCookie(this.value);
 		});
 		
 		//change $iterationSelect
 		$iterationSelect.on('change', function () {
 			var index = $(this).val() - 1;
-			if (readJson.index === null) { readJson.index = index; }
 			readJson.iteration(index);
 		});
 		
 		//click $iterationPrev
 		$iterationPrev.on('click', function () {
 			var index = readJson.index - 1
-			readJson.iteration(index);
+			readJson.iteration(index, 'nullIsNotUpdate');
 		});
 		
 		//click $iterationNext
 		$iterationNext.on('click', function () {
 			var index = readJson.index + 1
-			readJson.iteration(index);
+			readJson.iteration(index, 'nullIsNotUpdate');
 		});
 		
 		
