@@ -15,6 +15,10 @@
 		width: 100px;
 	}
 	
+	.iterationArrow {
+		display: inline-block;
+	}
+	
 	#debug {
 		margin: 10px 0;
 		padding: 10px;
@@ -52,7 +56,7 @@
 			<tr>
 				<td>
 					<div class="buttonArea">
-						<a class="loadButton btn">Ajaxロード</a>
+						<a class="loadButton btn"><i class="icon-refresh"></i>Ajaxロード</a>
 						<a class="favoriteButton btn"><i class="icon-star"></i>最後に追加したお気に入りの詳細ページへ</a>
 					<!-- /.buttonArea --></div>
 				</td>
@@ -75,9 +79,11 @@
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select> 番目を表示
-
-						<a class="iterationPrev btn">前を表示</a>
-						<a class="iterationNext btn">次を表示</a>
+						
+						<div class="btn-group iterationArrow">
+							<a class="iterationPrev btn" href="#"><i class="icon-chevron-left"></i></a>
+							<a class="iterationNext btn" href="#"><i class="icon-chevron-right"></i></a>
+						</div>
 					<!-- /.buttonArea --></div>
 				</td>
 			</tr>
