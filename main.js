@@ -50,6 +50,7 @@
 
 			var $contents        = $('#contents')
 			,   $loadButton      = $contents.find($('.loadButton'))
+			,   $loadButton2      = $contents.find($('.loadButton2'))
 			,   $iterationSelect = $contents.find($('.iterationButton'))
 			,   $iterationPrev   = $contents.find($('.iterationPrev'))
 			,   $iterationNext   = $contents.find($('.iterationNext'))
@@ -63,6 +64,12 @@
 			$loadButton.on('click', function (e) {
 				var query = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 				readJson.loadBind(query);
+				e.preventDefault();
+			});
+			
+			$loadButton2.on('click', function (e) {
+				var query = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+				readJson.loadBind(query, 0);
 				e.preventDefault();
 			});
 

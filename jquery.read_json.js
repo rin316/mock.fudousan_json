@@ -44,23 +44,28 @@ var MY = {};
 				 * @param {string, array} query ajax呼び出し時に送信するオブジェクトの、元になる文字列や配列
 				 * @return {Instance Object}
 				 */
-				loadBind: function (query) {
+				loadBind: function (query, iterationIndex) {
 					var __this = this;
 
-					//reset
+					//indexをresetしiteration prev, nextボタンを無効化
 					__this.index = null;
 
-					//読み込み完了時
+					//読み込みが完了したら描画
 					__this.request(query).then(function (res) {
 						__this.res = res;
 
 						//status:'success'以外なら処理を停止
 						if(!__this.statusValidation(res.status)){ return false }
-
-						//描画
-						__this.draw(__this.res, __this.templateSelector, __this.OutputSelector);
-
-					//読み込み失敗時
+						
+						//絞込んで描画
+						console.log(iterationIndex);
+						if (iterationIndex !== undefined) {
+							__this.iteration(iterationIndex);
+						//全て描画
+						} else {
+							__this.draw(__this.res, __this.templateSelector, __this.OutputSelector);
+						}
+					//読み込みが失敗したら
 					}, function () {
 						console.log('Ajax読み込みエラーです。');
 					});
@@ -197,6 +202,7 @@ var MY = {};
 				 * @param {Number} index 表示させたい要素のindex番号
 				 * @param {string} nullIsNotUpdate 値が'nullIsNotUpdate'であれば__this.index === null の時に__this.indexを更新しない
 				 * @return {Instance Object}
+				 * @see loadBind
 				 */
 				iteration: function (index, nullIsNotUpdate) {
 					var __this = this
