@@ -30,8 +30,7 @@
 		
 		//click $showFavorite
 		$showFavorite.on('click', function () {
-			var query = readJson.cookieArray;
-			readJson.loadBind(query);
+			debugMsg = 'linkへジャンプ: detail.php?id='  + readJson.cookieArray[readJson.cookieArray.length - 1];
 		});
 		
 		//click addFavoriteSelector ($.delegate)
@@ -62,12 +61,21 @@
 		 * debug
 		 * TODO debug後に削除
 		 */
+		var debugMsg = null;
+		
 		readJson.debug('.cookie', readJson.cookieArray);
 		readJson.debug('.query', readJson.queryObj);
 		
 		$(window).on('click', function () {
 			readJson.debug('.cookie', readJson.cookieArray);
-			readJson.debug('.query', readJson.queryObj);
+			
+			if (debugMsg) {
+				readJson.debug('.query', debugMsg);
+				debugMsg = null;
+			} else {
+				readJson.debug('.query', readJson.queryObj);
+			}
+			
 		});
 		//end debug
 		

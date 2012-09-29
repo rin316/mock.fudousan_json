@@ -246,13 +246,15 @@ var MY = {};
 				debug: function (selector, variable) {
 					var __this = this;
 					
+					//variable === nullなら抜ける
+					if (variable === null){ variable = 'null'; }
+					
 					//debug領域に値を表示
 					$(selector).html(trace(variable));
 					
 					//渡されたobjectをconsole.logのように見やすい文字で出力
 					function trace(s){
-						//queryが空なら抜ける
-						if (!__this.queryObj){ return false }
+						
 						var mylog = [];
 						function getIndent(num){
 							var ind = [];
