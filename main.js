@@ -47,9 +47,6 @@
 			,   dataPath: 'data.json' //{string}
 			,   idName: 'id' //{string}
 			});
-			
-			//readJson.jqTemplateSelector  = '#jQueryTemplate';
-			//readJson.jqOutputSelector    = '#jQueryTemplateOutput';
 
 			var $contents        = $('#contents')
 			,   $loadButton      = $contents.find($('.loadButton'))
