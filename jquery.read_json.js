@@ -132,31 +132,7 @@ var MY = {};
 					//既に挿入された要素があれば削除
 					$outputArea.find($('.ajaxDraw')).remove();
 					$(templateId).tmpl(res.results).hide().appendTo($outputArea).fadeIn(700).addClass('ajaxDraw');
-
-					//描画後、お気に入りボタンにイベントを設定
-					__this.addFavoriteEvent();
-
-					return __this;
-				}
-				,
-
-				/*
-				 * addFavoriteEvent
-				 * 描画されたお気に入りボタンにイベントを設定
-				 * @return {Instance Object}
-				 * @see draw
-				 */
-				addFavoriteEvent: function () {
-					var __this = this;
-
-					//$addFavoriteButton 定義
-					__this.$addFavoriteButton = $(__this.addFavoriteSelector);
-
-					//click $addFavoriteButton
-					__this.$addFavoriteButton.on('click', function () {
-						__this.setCookie(this.value);
-					});
-
+					
 					return __this;
 				}
 				,
@@ -170,7 +146,7 @@ var MY = {};
 				 *     'add':    cookieへの追加のみ有効
 				 *     'remove': cookieへの削除のみ有効
 				 * @return {Instance Object}
-				 * @see addFavoriteEvent
+				 * @see 
 				 */
 				setCookie: function (id, limitedControl) {
 					var __this = this;
