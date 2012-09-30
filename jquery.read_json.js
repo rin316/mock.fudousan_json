@@ -189,7 +189,7 @@ var MY = {};
 				 */
 				cookieEnabled: (function () {
 					$.cookie('cookiecheck', 'set');
-					result = ($.cookie('cookiecheck') === 'set') ? true : false;
+					var result = ($.cookie('cookiecheck') === 'set') ? true : false;
 					$.cookie('cookiecheck', null);
 					return result;
 				})()
