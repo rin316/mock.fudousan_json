@@ -18,10 +18,10 @@
 				var lastId = cookieArr[cookieArr.length - 1];
 				$showFavorite.attr('href', 'detail.php?id=' + lastId);
 
-				//TODO debug 後から削除
+				//TODO debug リンクを無効 後から削除
 				$showFavorite.on('click', function (e) {
-					e.preventDefault();
 					alert('linkへ飛ぶ: detail.php?id=' + lastId);
+					e.preventDefault();
 				});
 
 			} else {
@@ -48,12 +48,12 @@
 			,   idName: 'id' //{string}
 			});
 
-			var $contents        = $('#contents')
-			,   $loadButton      = $contents.find($('.loadButton'))
-			,   $loadButton2      = $contents.find($('.loadButton2'))
-			,   $iterationSelect = $contents.find($('.iterationButton'))
-			,   $iterationPrev   = $contents.find($('.iterationPrev'))
-			,   $iterationNext   = $contents.find($('.iterationNext'))
+			var $contents           = $('#contents')
+			,   $loadButton         = $contents.find($('.loadButton'))
+			,   $loadButton2        = $contents.find($('.loadButton2'))
+			,   $iterationSelect    = $contents.find($('.iterationButton'))
+			,   $iterationPrev      = $contents.find($('.iterationPrev'))
+			,   $iterationNext      = $contents.find($('.iterationNext'))
 			,   addFavoriteSelector = '.addFavoriteButton'
 			;
 
@@ -67,6 +67,7 @@
 				e.preventDefault();
 			});
 			
+			//click $loadButton2
 			$loadButton2.on('click', function (e) {
 				var query = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 				readJson.loadBind(query, 0);

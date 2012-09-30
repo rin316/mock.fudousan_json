@@ -210,9 +210,7 @@ var MY = {};
 					
 					if (!__this.res) { return false; }
 					//'nullIsNotUpdate'が設定されていて && __this.indexがnullなら抜ける
-					if (nullIsNotUpdate === 'nullIsNotUpdate' && __this.index === null) {
-						return false;
-					}
+					if (nullIsNotUpdate === 'nullIsNotUpdate' && __this.index === null) { return false; }
 					//0より小さい場合は抜ける,  取得した要素の数より大きければ抜ける
 					if (index < 0 || index > __this.res.results.length - 1) { return false; }
 					//更新
