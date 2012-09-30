@@ -89,14 +89,14 @@
 
 			//click $iterationPrev
 			$iterationPrev.on('click', function (e) {
-				var index = readJson.index - 1
+				var index = readJson.index - 1;
 				readJson.iteration(index, 'nullIsNotUpdate');
 				e.preventDefault();
 			});
 
 			//click $iterationNext
 			$iterationNext.on('click', function (e) {
-				var index = readJson.index + 1
+				var index = readJson.index + 1;
 				readJson.iteration(index, 'nullIsNotUpdate');
 				e.preventDefault();
 			});
