@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title></title>
 
-<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/import.css" rel="stylesheet">
 <script src="./resources/js/loader.js"></script>
 <script src="http://rin316.github.com/jquery.liquid.carousel/jquery.liquid.carousel.js"></script>
 
@@ -59,23 +59,7 @@
 			<tr>
 				<td>
 					<div class="buttonArea">
-						iteration: 
-						<select class="iterationButton" name="iterationButton">
-							<option value="">選択</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-							<option value="11">11</option>
-							<option value="12">12</option>
-						</select> 番目を表示
-						
+						iteration:
 						<div class="btn-group iterationArrow">
 							<a class="iterationPrev btn" href="#"><i class="icon-chevron-left"></i></a>
 							<a class="iterationNext btn" href="#"><i class="icon-chevron-right"></i></a>
@@ -105,6 +89,7 @@
 				<th>間取り</th>
 				<th>築年数</th>
 				<th>お気に入り</th>
+				<th>詳細</th>
 			</tr>
 		</tbody>
 	</table>
@@ -124,6 +109,7 @@
 					<td>${roomLayout}</td>
 					<td>${age}</td>
 					<td><button class="addFavoriteButton btn btn-primary" type="button" name="addFavoriteButton" value="${id}"><i class="icon-plus icon-white"></i>追加</button></td>
+					<td><button class="detailButton btn btn-info" type="button" name="detailButton" value="${id}"><i class="icon-eye-open icon-white"></i>詳細</button></td>
 				</tr>
 			</tbody>
 		</table>

@@ -51,7 +51,6 @@
 			var $contents           = $('#contents')
 			,   $loadButton         = $contents.find($('.loadButton'))
 			,   $loadButton2        = $contents.find($('.loadButton2'))
-			,   $iterationSelect    = $contents.find($('.iterationButton'))
 			,   $iterationPrev      = $contents.find($('.iterationPrev'))
 			,   $iterationNext      = $contents.find($('.iterationNext'))
 			,   addFavoriteSelector = '.addFavoriteButton'
@@ -80,24 +79,17 @@
 				e.preventDefault();
 			});
 
-			//change $iterationSelect
-			$iterationSelect.on('change', function (e) {
-				var index = $(this).val() - 1;
-				readJson.iteration(index);
-				e.preventDefault();
-			});
-
 			//click $iterationPrev
 			$iterationPrev.on('click', function (e) {
 				var index = readJson.index - 1;
-				readJson.iteration(index, 'nullIsNotUpdate');
+				readJson.iteration(index);
 				e.preventDefault();
 			});
 
 			//click $iterationNext
 			$iterationNext.on('click', function (e) {
 				var index = readJson.index + 1;
-				readJson.iteration(index, 'nullIsNotUpdate');
+				readJson.iteration(index);
 				e.preventDefault();
 			});
 
