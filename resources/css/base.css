@@ -1,0 +1,21 @@
+table th,
+table td {
+    width: 100px;
+}
+
+.iterationArrow {
+    display: inline-block;
+}
+
+#debug p {
+    margin: 0;
+}
+
+.cookie,
+.query {
+    color: blue;
+}
+
+#modalWindowContents {
+    display: none;
+}
