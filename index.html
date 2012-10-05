@@ -53,6 +53,7 @@
 						loadbind: 
 						<a class="loadButton btn btn-primary"><i class="icon-refresh icon-white"></i> Ajax読み込み</a>
 						<a class="loadButton2 btn btn-primary"><i class="icon-refresh icon-white"></i>Ajax読み込み後、iterationで1件だけ表示</a>
+						<a class="showFavButton btn btn-primary"><i class="icon-refresh icon-white"></i>Ajax読み込み(お気に入りをリクエスト)</a>
 					<!-- /.buttonArea --></div>
 				</td>
 			</tr>
@@ -100,17 +101,17 @@
 	<div class="tableWrapper">
 		<table class="table table-bordered table-condensed">
 			<tbody>
-				<tr>
-					<td>${id}</td>
-					<td>${address}</td>
-					<td>${walkingTime}</td>
-					<td>${rent}</td>
-					<td>${keyMoney}</td>
-					<td>${roomLayout}</td>
-					<td>${age}</td>
-					<td><button class="addFavoriteButton btn btn-primary" type="button" name="addFavoriteButton" value="${id}"><i class="icon-plus icon-white"></i>追加</button></td>
-					<td><button class="detailButton btn btn-info" type="button" name="detailButton" value="${id}"><i class="icon-eye-open icon-white"></i>詳細</button></td>
-				</tr>
+			<tr>
+				<td>${id}</td>
+				<td>${address}</td>
+				<td>${walkingTime}</td>
+				<td>${rent}</td>
+				<td>${keyMoney}</td>
+				<td>${roomLayout}</td>
+				<td>${age}</td>
+				<td><button class="addFavoriteButton btn btn-primary" type="button" name="addFavoriteButton" value="${id}"><i class="icon-plus icon-white"></i>追加</button></td>
+				<td><button class="detailsButton btn btn-info" type="button" name="detailButton" value="${id}"><i class="icon-eye-open icon-white"></i>詳細</button></td>
+			</tr>
 			</tbody>
 		</table>
 	</div>
@@ -118,6 +119,68 @@
 	
 <!-- /#contents --></div>
 
+	<div id="modalTemplate">
+		<p><a class="ui-domwindow-close" href="#">close</a></p>
+
+		<p>詳細表示: Ajaxリクエストはせずにiterationで表示</p>
+
+		<table class="table table-bordered table-condensed">
+			<tbody>
+			<tr>
+				<td>
+					<div class="buttonArea">
+						iteration:
+						<div class="btn-group iterationArrow">
+							<a class="iterationPrev btn" href="#"><i class="icon-chevron-left"></i></a>
+							<a class="iterationNext btn" href="#"><i class="icon-chevron-right"></i></a>
+						</div>
+						<!-- /.buttonArea --></div>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<script id="jQueryTemplateModal" type="text/x-jquery-tmpl">
+			<div class="tableWrapper">
+				<table class="table table-bordered table-condensed">
+					<tbody>
+						<tr>
+							<th>ID</th>
+							<td>${id}</td>
+						</tr>
+						<tr>
+							<th>住所</th>
+							<td>${address}</td>
+						</tr>
+						<tr>
+							<th>徒歩</th>
+							<td>${walkingTime}</td>
+						</tr>
+						<tr>
+							<th>賃料</th>
+							<td>${rent}</td>
+						</tr>
+						<tr>
+							<th>礼金</th>
+							<td>${keyMoney}</td>
+						</tr>
+						<tr>
+							<th>間取り</th>
+							<td>${roomLayout}</td>
+						</tr>
+						<tr>
+							<th>築年数</th>
+							<td>${age}</td>
+						</tr>
+						<tr>
+							<th>お気に入り</th>
+							<td><button class="addFavoriteButton btn btn-primary" type="button" name="addFavoriteButton" value="${id}"><i class="icon-plus icon-white"></i>追加</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</script>
+	<!-- /.modalTemplate --></div>
 
 <!-- /.container --></div>
 </body>

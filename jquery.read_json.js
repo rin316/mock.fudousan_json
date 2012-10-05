@@ -1,9 +1,9 @@
 /*!
  * jquery.read_json.js
  */
-var MY = {};
+var mockFudousan = {};
 
-;(function ($, window, undefined) {
+;(function ($, window, MY, undefined) {
 	MY.ui = {
 		ReadJson: (function () {
 			var DEFAULT_OPTIONS
@@ -15,6 +15,9 @@ var MY = {};
 			,   OutputSelector: '#jQueryTemplateOutput' //{selector}
 			,   dataPath: 'data.json' //{string}
 			,   idName: 'id' //{string}
+			,	res: null
+			,	queryObj: null
+			,	index: null
 			};
 			
 			ReadJson = function (options) {
@@ -29,10 +32,10 @@ var MY = {};
 				
 				//cookieからidを読み込み配列化  cookieが無ければ空の配列を作成
 				__this.cookieArray = ($.cookie(__this.idName)) ? $.cookie(__this.idName).split("-"): [];
-				
-				__this.res      = null;//Ajax response
-				__this.queryObj = null;//Ajax send 'data:' query object
-				__this.index    = null;//iteration index
+
+				__this.res      = __this.o.res; //Ajax response
+				__this.queryObj = __this.o.queryObj; //Ajax send 'data:' query object
+				__this.index    = __this.o.index; //iteration index
 
 				return __this;
 			}
@@ -128,9 +131,12 @@ var MY = {};
 				 * @see loadBind, iteration
 				 */
 				draw: function (res, templateId, outputId) {
-					var __this = this
-					,   $outputArea = $(outputId)
-					;
+					var __this = this;
+
+					templateId = templateId || __this.templateSelector;
+					outputId = outputId || __this.OutputSelector;
+
+					var $outputArea = $(outputId);
 
 					//既に挿入された要素があれば削除
 					$outputArea.find($('.ajaxDraw')).remove();
@@ -299,4 +305,4 @@ var MY = {};
 		})()
 	}
 
-})(jQuery, this);
+})(jQuery, this, mockFudousan);

@@ -16,6 +16,6 @@ table td {
     color: blue;
 }
 
-#modalWindowContents {
+#modalTemplate {
     display: none;
 }

@@ -1,22 +1,37 @@
 /*!
  * main.js
  */
-;(function ($, window, undefined) {	
+;(function ($, window, MY, undefined) {
+
+	var setting = {
+		favCookieId: 'id'
+	,	dataJson: 'data.json'
+	};
 	
 	$(document).ready( function () {
+
+		/**
+		 * Modal window setup
+		 */
+		(function () {
+			$.ui.domwindowdialog.setup({
+				selector_close: '.ui-domwindow-close'
+			});
+		})();
+
+
 		/*
-		 * 最後に追加したお気に入りの詳細ページへ飛ぶボタン
+		 * 最後に追加したお気に入りの詳細ページ へ飛ぶボタン
 		 */
 		(function () {
 			var $showFavorite  = $('.favoriteButton')
-			,   cookie = $.cookie('id')
+			,   cookie = $.cookie(setting.favCookieId)
 			;
 
-			//TODO 文字列'id'を使わずReadJson.idNameを使う
 			if (cookie){
 				var cookieArr = cookie.split("-");
 				var lastId = cookieArr[cookieArr.length - 1];
-				$showFavorite.attr('href', 'detail.php?id=' + lastId);
+				$showFavorite.attr('href', 'detail.php?' + setting.favCookieId + '=' + lastId);
 
 				//TODO debug リンクを無効 後から削除
 				$showFavorite.on('click', function (e) {
@@ -32,28 +47,31 @@
 				});
 			}
 		})();
-		
-		
+
 		
 		/*
 		 * readJson
 		 * Ajax読み込み
 		 */
 		(function () {
+			var modalTemplate = '#modalTemplate';
+
 			//インスタンス作成
 			var readJson = new MY.ui.ReadJson({
 			    templateSelector: '#jQueryTemplate' //{selector}
 			,   OutputSelector: '#jQueryTemplateOutput' //{selector}
-			,   dataPath: 'data.json' //{string}
-			,   idName: 'id' //{string}
+			,   dataPath: setting.dataJson //{string}
+			,   idName: setting.favCookieId //{string}
 			});
 
 			var $contents           = $('#contents')
 			,   $loadButton         = $contents.find($('.loadButton'))
 			,   $loadButton2        = $contents.find($('.loadButton2'))
-			,   $iterationPrev      = $contents.find($('.iterationPrev'))
-			,   $iterationNext      = $contents.find($('.iterationNext'))
-			,   addFavoriteSelector = '.addFavoriteButton'
+			,   $showFavButton      = $contents.find($('.showFavButton'))
+			,   iterationPrev       = '.iterationPrev'
+			,   iterationNext       = '.iterationNext'
+			,   addFavorite         = '.addFavoriteButton'
+			,   detailsButton       = '.detailsButton'
 			;
 
 			/*
@@ -73,23 +91,77 @@
 				e.preventDefault();
 			});
 
-			//click addFavoriteSelector ($.delegate)
-			$contents.on('click', addFavoriteSelector, function (e) {
+			//click $showFavButton
+			$showFavButton.on('click', function (e) {
+				var query = readJson.cookieArray;
+				readJson.loadBind(query);
+				e.preventDefault();
+			});
+
+			//click addFavorite ($.live)
+			//readJsonとreadJsonModal(モーダルウィンドウ)にも適用
+			$(document).on('click', addFavorite, function (e) {
 				readJson.setCookie(this.value);
 				e.preventDefault();
 			});
 
-			//click $iterationPrev
-			$iterationPrev.on('click', function (e) {
+			//click iterationPrev ($.delegate)
+			$contents.on('click', iterationPrev, function (e) {
 				var index = readJson.index - 1;
 				readJson.iteration(index);
 				e.preventDefault();
 			});
 
-			//click $iterationNext
-			$iterationNext.on('click', function (e) {
+			//click iterationNext ($.delegate)
+			$contents.on('click', iterationNext, function (e) {
 				var index = readJson.index + 1;
 				readJson.iteration(index);
+				e.preventDefault();
+			});
+
+			//click detailsButton ($.delegate)
+			$contents.on('click', detailsButton, function (e) {
+				var __this = this;
+
+				//modal作成
+				window.domwindowApi.open(modalTemplate, {
+					width: 800
+				,	height: 400
+				,   afteropen: function(e, data){
+						data.dialog.append('<div id="jQueryTemplateOutputModal"></div>');
+
+						var $modal = $('.ui-domwindowdialog');
+
+						//modal用のインスタンス作成
+						var readJsonModal = new MY.ui.ReadJson({
+							templateSelector: '#jQueryTemplateModal' //{selector}
+							,   OutputSelector: '#jQueryTemplateOutputModal' //{selector}
+							,   dataPath: setting.dataJson //{string}
+							,   idName: setting.favCookieId //{string}
+								//inheritance readJson
+							,   res: readJson.res
+						});
+
+						var index = __this.value - 1;
+						readJsonModal.iteration(index);
+
+						//click iterationPrev ($.delegate)
+						$modal.on('click', iterationPrev, function (e) {
+							var index = readJsonModal.index - 1;
+							readJsonModal.iteration(index);
+							e.preventDefault();
+						});
+
+						//click iterationNext ($.delegate)
+						$modal.on('click', iterationNext, function (e) {
+							var index = readJsonModal.index + 1;
+							readJsonModal.iteration(index);
+							e.preventDefault();
+						});
+
+					}
+				});
+
 				e.preventDefault();
 			});
 
@@ -119,4 +191,4 @@
 		
 	});//end document ready
 
-})(jQuery, this);
+})(jQuery, this, mockFudousan);
