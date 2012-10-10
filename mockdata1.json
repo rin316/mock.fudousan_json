@@ -1,0 +1,19 @@
+{
+	"id":{
+		"satou":   {"name": "satou", "no": "1", "mail": "satou@example.com", "tel": "090-0000-0001", "adress": "sapporo1"},
+		"itou":    {"name": "itou", "no": "2", "mail": "itou@example.com", "tel": "090-0000-0002", "adress": "sapporo2"},
+		"suzuki":   {"name": "suzuki", "no": "3", "mail": "suzuki@example.com", "tel": "090-0000-0003", "adress": "sapporo3"},
+		"takahashi":{"name": "takahashi", "no": "4", "mail": "takahashi@example.com", "tel": "090-0000-0004", "adress": "sapporo4"},
+		"tanaka":   {"name": "tanaka", "no": "5", "mail": "tanaka@example.com", "tel": "090-0000-0005", "adress": "sapporo5"}
+	}
+}
+
+
+
+
+
+
+
+
+
+
