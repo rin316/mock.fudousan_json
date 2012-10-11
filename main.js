@@ -5,7 +5,7 @@
 
 	var setting = {
 		favCookieId: 'id'
-	,	dataJson: 'json.php'
+	,	dataJson: 'data.json'
 	};
 	
 	$(document).ready( function () {
